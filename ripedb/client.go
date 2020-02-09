@@ -59,7 +59,10 @@ func (c *Client) GetResource(key string, resourceType ResourceType) ([]Resource,
 	body, _ := ioutil.ReadAll(resp.Body)
 
 	var f RipeAPIObject
-	json.Unmarshal(body, &f)
+	err := json.Unmarshal(body, &f)
+	if err != nil {
+		return nil, err
+	}
 	resources := c.ResourcesFromAPIObject(&f)
 
 	return resources, nil
