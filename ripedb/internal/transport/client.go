@@ -9,6 +9,7 @@ import (
 	"io"
 	"io/ioutil"
 	"net/http"
+	"strconv"
 	"strings"
 )
 
@@ -18,6 +19,7 @@ type Client struct {
 	Credentials *APICredentials
 	HTTPClient  *http.Client
 	logger      *zerolog.Logger
+	DryRun      bool
 }
 
 // New returns a new Transport HTTP client
@@ -70,6 +72,10 @@ func (c *Client) doRequest(ctx context.Context, method string, path string, out 
 
 	// add auth headers
 	req.URL.Query().Add("password", c.Credentials.Password)
+
+	if c.DryRun {
+		req.URL.Query().Add("dry-run", strconv.FormatBool(c.DryRun))
+	}
 
 	req.Header.Set("User-Agent", "go-ripedb/0.0.0")
 	req.Header.Set("Accept", "application/json")

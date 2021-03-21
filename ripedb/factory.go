@@ -10,8 +10,8 @@ import (
 type APIEndpoint string
 
 const (
-	APIEndpointLive APIEndpoint = "https://rest.db.ripe.net"
-	APIEndpointTest APIEndpoint = "https://rest-test.db.ripe.net"
+	APIEndpointLive APIEndpoint = "https://rest.db.ripe.net/ripe"
+	APIEndpointTest APIEndpoint = "https://rest-test.db.ripe.net/test"
 )
 
 // New creates a new Client with password and context

@@ -10,4 +10,5 @@ const (
 	ResourceTypeDomain   ResourceType = "domain"
 	ResourceTypeAutNum   ResourceType = "aut-num"
 	ResourceTypeAsSet    ResourceType = "as-set"
+	ResourceTypePerson   ResourceType = "person"
 )

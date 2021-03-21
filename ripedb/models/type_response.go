@@ -1,6 +1,6 @@
 package models
 
-type WhoisResourceResponse struct {
+type WhoisResource struct {
 	Link    *Link    `json:"link"`
 	Objects *Objects `json:"objects"`
 	TaC     *Link    `json:"terms-and-conditions"`
@@ -16,20 +16,20 @@ type Objects struct {
 }
 
 type Resource struct {
-	ResourceType   ResourceType
-	PrimaryKey     *Attributes `json:"primary-key"`
-	Attributes     *Attributes
-	Source         *Source
-	Link           *Link  `json:"link,omitempty"`
-	ReferencedType string `json:"referenced-type,omitempty"`
+	ResourceType   ResourceType `json:"resource-type,omitempty"`
+	PrimaryKey     *Attributes  `json:"primary-key,omitempty"`
+	Attributes     *Attributes  `json:"attributes"`
+	Source         *Source      `json:"source"`
+	Link           *Link        `json:"link,omitempty"`
+	ReferencedType string       `json:"referenced-type,omitempty"`
 }
 
 type Source struct {
-	ID string
+	ID string `json:"id"`
 }
 
 type Attributes struct {
-	Attribute []*Attribute
+	Attribute []*Attribute `json:"attribute"`
 }
 
 type Attribute struct {
