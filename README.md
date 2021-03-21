@@ -1,2 +1,3 @@
-# go-ripedb [![Build Status](https://travis-ci.org/jpbede/go-ripedb.svg?branch=master)](https://travis-ci.org/jpbede/go-ripedb)
-Golang RIPE Database REST API Binding
+# RIPE NCC REST API client for Go
+
+**WORK IN PROGRESS! API may change**
