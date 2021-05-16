@@ -2,8 +2,8 @@ package ripedb
 
 import (
 	"context"
-	"github.com/jpbede/go-ripedb/ripedb/internal/transport"
-	"github.com/jpbede/go-ripedb/ripedb/models"
+	"go.bnck.me/ripedb/ripedb/internal/transport"
+	"go.bnck.me/ripedb/ripedb/models"
 )
 
 // Client represents the main client
@@ -17,7 +17,7 @@ func (c *Client) SetDryRun(enable bool) {
 }
 
 // GetResource returns an object from the RIPE Database by key and resource type
-func (c *Client) GetResource(ctx context.Context, key string, resourceType models.ResourceType) ([]*models.Resource, error) {
+func (c *Client) GetResource(ctx context.Context, key string, resourceType models.ResourceType) ([]*models.Object, error) {
 	var out models.WhoisResource
 	if err := c.transport.Get(ctx, "/"+string(resourceType)+"/"+key, &out); err != nil {
 		return nil, err
@@ -26,16 +26,16 @@ func (c *Client) GetResource(ctx context.Context, key string, resourceType model
 }
 
 // CreateResource creates a resource in RIPE database
-func (c *Client) CreateResource(ctx context.Context, resourceType models.ResourceType, object models.WhoisResource) ([]*models.Resource, error) {
+func (c *Client) CreateResource(ctx context.Context, resource models.Resource) ([]*models.Object, error) {
 	var out models.WhoisResource
-	if err := c.transport.Post(ctx, "/"+string(resourceType), &out, transport.WithJSONRequestBody(object)); err != nil {
+	if err := c.transport.Post(ctx, "/"+resource.TypeString(), &out, transport.WithJSONRequestBody(resource.RIPEWhoisResource())); err != nil {
 		return nil, err
 	}
 	return out.Objects.Object, nil
 }
 
 // DeleteResource deletes a resource in RIPE database
-func (c *Client) DeleteResource(ctx context.Context, key string, resourceType models.ResourceType) ([]*models.Resource, error) {
+func (c *Client) DeleteResource(ctx context.Context, key string, resourceType models.ResourceType) ([]*models.Object, error) {
 	var out models.WhoisResource
 	if err := c.transport.Delete(ctx, "/"+string(resourceType)+"/"+key, &out); err != nil {
 		return nil, err

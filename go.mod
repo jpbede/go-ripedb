@@ -1,4 +1,4 @@
-module github.com/jpbede/go-ripedb
+module go.bnck.me/ripedb
 
 go 1.15
 

@@ -1,8 +1,8 @@
 package ripedb_test
 
 import (
-	"github.com/jpbede/go-ripedb/ripedb"
 	"github.com/stretchr/testify/assert"
+	"go.bnck.me/ripedb/ripedb"
 	"net/http"
 	"testing"
 )

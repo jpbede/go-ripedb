@@ -12,10 +12,10 @@ type Link struct {
 }
 
 type Objects struct {
-	Object []*Resource `json:"object"`
+	Object []*Object `json:"object"`
 }
 
-type Resource struct {
+type Object struct {
 	ResourceType   ResourceType `json:"resource-type,omitempty"`
 	PrimaryKey     *Attributes  `json:"primary-key,omitempty"`
 	Attributes     *Attributes  `json:"attributes"`

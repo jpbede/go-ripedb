@@ -2,7 +2,7 @@ package ripedb
 
 import (
 	"errors"
-	"github.com/jpbede/go-ripedb/ripedb/internal/transport"
+	"go.bnck.me/ripedb/ripedb/internal/transport"
 	"net/http"
 )
 

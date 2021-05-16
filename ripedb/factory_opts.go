@@ -1,8 +1,8 @@
 package ripedb
 
 import (
-	"github.com/jpbede/go-ripedb/ripedb/internal/transport"
 	"github.com/rs/zerolog"
+	"go.bnck.me/ripedb/ripedb/internal/transport"
 	"net/http"
 )
 
